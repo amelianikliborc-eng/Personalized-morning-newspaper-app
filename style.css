@@ -1,0 +1,168 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #d8d1c4;
+    color: #171512;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.newspaper {
+    width: min(1000px, 94%);
+    margin: 40px auto;
+    padding: 45px;
+    background: #f4efe4;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.newspaper-header {
+    text-align: center;
+    border-top: 2px solid #171512;
+    border-bottom: 1px solid #171512;
+    padding: 15px 0 20px;
+}
+
+.location {
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin: 0 0 15px;
+}
+
+.newspaper-header h1 {
+    font-size: 56px;
+    letter-spacing: 5px;
+    margin: 0;
+    font-weight: normal;
+}
+
+.date {
+    margin: 15px 0 0;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+.welcome {
+    text-align: center;
+    padding: 35px 10px;
+    border-bottom: 1px solid #777;
+}
+
+.welcome h2 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: normal;
+    letter-spacing: 2px;
+}
+
+.welcome p {
+    margin-bottom: 0;
+    font-style: italic;
+}
+
+.weather {
+    padding: 25px 0;
+    border-bottom: 1px solid #777;
+}
+
+.weather h2 {
+    text-align: center;
+    font-size: 15px;
+    letter-spacing: 4px;
+}
+
+.weather-content {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    text-align: center;
+}
+
+.weather-content div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.weather-content strong {
+    font-size: 25px;
+    font-weight: normal;
+}
+
+.weather-content span {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.news {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 25px;
+    padding-top: 30px;
+}
+
+.news article {
+    padding-right: 20px;
+    border-right: 1px solid #999;
+}
+
+.news article:last-child {
+    border-right: none;
+}
+
+.category {
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.main-story h2 {
+    font-size: 35px;
+    font-weight: normal;
+    margin: 0 0 15px;
+}
+
+.story h3 {
+    font-size: 22px;
+    font-weight: normal;
+}
+
+.news p {
+    line-height: 1.6;
+}
+
+footer {
+    margin-top: 40px;
+    padding-top: 15px;
+    border-top: 1px solid #777;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 700px) {
+
+    .newspaper {
+        padding: 25px;
+    }
+
+    .newspaper-header h1 {
+        font-size: 38px;
+    }
+
+    .weather-content {
+        gap: 25px;
+    }
+
+    .news {
+        grid-template-columns: 1fr;
+    }
+
+    .news article {
+        border-right: none;
+        border-bottom: 1px solid #999;
+        padding-bottom: 20px;
+    }
+}
