@@ -44,7 +44,6 @@ const translations = {
         footer: "Morning Newspaper"
     },
 
-
     pl: {
         title: "PORANNE WYDANIE",
         greeting: "DZIEŃ DOBRY",
@@ -77,7 +76,6 @@ const translations = {
         footer: "Poranna Gazeta"
     },
 
-
     de: {
         title: "MORGENAUSGABE",
         greeting: "GUTEN MORGEN",
@@ -108,6 +106,70 @@ const translations = {
         countryPlaceholder: "Gib dein Land ein",
         save: "EINSTELLUNGEN SPEICHERN",
         footer: "Morgenzeitung"
+    },
+
+    es: {
+        title: "EDICIÓN MATUTINA",
+        greeting: "BUENOS DÍAS",
+        welcome: "Tu periódico matutino personalizado.",
+        weather: "TIEMPO",
+        now: "Ahora",
+        highLow: "Máx. / Mín.",
+        rain: "Lluvia",
+        wind: "Viento",
+        sunrise: "Amanecer",
+        sunset: "Atardecer",
+        world: "MUNDO",
+        worldTitle: "Tus noticias de la mañana",
+        worldText: "Los acontecimientos más importantes del mundo, seleccionados y resumidos para ti.",
+        science: "CIENCIA",
+        scienceTitle: "Ciencia y espacio",
+        scienceText: "Los acontecimientos científicos más interesantes de la última noche.",
+        technology: "TECNOLOGÍA",
+        technologyTitle: "Tecnología",
+        technologyText: "Las últimas novedades del mundo de la tecnología y la electrónica.",
+        settings: "AJUSTES",
+        name: "Tu nombre",
+        city: "Ciudad",
+        country: "País",
+        language: "Idioma",
+        namePlaceholder: "Escribe tu nombre",
+        cityPlaceholder: "Escribe tu ciudad",
+        countryPlaceholder: "Escribe tu país",
+        save: "GUARDAR AJUSTES",
+        footer: "Periódico Matutino"
+    },
+
+    fr: {
+        title: "ÉDITION DU MATIN",
+        greeting: "BONJOUR",
+        welcome: "Votre journal du matin personnalisé.",
+        weather: "MÉTÉO",
+        now: "Maintenant",
+        highLow: "Max. / Min.",
+        rain: "Pluie",
+        wind: "Vent",
+        sunrise: "Lever du soleil",
+        sunset: "Coucher du soleil",
+        world: "MONDE",
+        worldTitle: "Vos actualités du matin",
+        worldText: "Les événements les plus importants du monde, sélectionnés et résumés pour vous.",
+        science: "SCIENCE",
+        scienceTitle: "Science et espace",
+        scienceText: "Les développements scientifiques les plus intéressants de la nuit dernière.",
+        technology: "TECHNOLOGIE",
+        technologyTitle: "Technologie",
+        technologyText: "Les dernières nouveautés dans le monde de la technologie et de l'électronique.",
+        settings: "PARAMÈTRES",
+        name: "Votre nom",
+        city: "Ville",
+        country: "Pays",
+        language: "Langue",
+        namePlaceholder: "Entrez votre nom",
+        cityPlaceholder: "Entrez votre ville",
+        countryPlaceholder: "Entrez votre pays",
+        save: "ENREGISTRER",
+        footer: "Journal du Matin"
     }
 
 };
