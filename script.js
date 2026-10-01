@@ -2,7 +2,8 @@ const defaultUser = {
     name: "AMELA",
     city: "OŚWIĘCIM",
     country: "POLAND",
-    language: "en"
+    language: "en",
+    theme: "classic"
 };
 
 let user = {
@@ -426,6 +427,9 @@ function saveSettings() {
     const languageInput =
         document.getElementById("language").value;
 
+const themeInput =
+    document.getElementById("theme").value;
+
 
     if (nameInput !== "") {
         user.name =
@@ -444,6 +448,8 @@ function saveSettings() {
 
     user.language =
         languageInput;
+user.theme =
+    themeInput;
 
 
     updateNewspaper();
