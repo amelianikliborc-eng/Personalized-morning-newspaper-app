@@ -748,6 +748,7 @@ function updateTheme() {
    NEWSPAPER
    ========================= */
 
+
 function updateNewspaper() {
 
     document.getElementById(
@@ -755,6 +756,30 @@ function updateNewspaper() {
     ).textContent =
         `${user.city}, ${user.country}`;
 
+    document.getElementById(
+        "name"
+    ).value =
+        user.name;
+
+    document.getElementById(
+        "city"
+    ).value =
+        user.city;
+
+    document.getElementById(
+        "country"
+    ).value =
+        user.country;
+
+    document.getElementById(
+        "language"
+    ).value =
+        user.language;
+
+    document.getElementById(
+        "theme"
+    ).value =
+        user.theme;
 
     updateTheme();
 
@@ -762,7 +787,6 @@ function updateNewspaper() {
 
     updateDate();
 }
-
 
 /* =========================
    WEATHER
@@ -969,23 +993,22 @@ function saveSettings() {
     }
 
 
-    user.language =
-        languageInput;
+  user.language =
+    languageInput;
 
+user.theme =
+    themeInput;
 
-    user.theme =
-        themeInput;
-    
 
 localStorage.setItem(
     "morningNewspaperUser",
     JSON.stringify(user)
 );
-    
-    updateNewspaper();
 
-    updateWeather();
-}
+
+updateNewspaper();
+
+updateWeather();
 
 
 /* =========================
