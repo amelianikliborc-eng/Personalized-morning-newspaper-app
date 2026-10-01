@@ -1,487 +1,261 @@
-
 /* =========================
    DEFAULT USER
-   ========================= */
+========================= */
 
 const defaultUser = {
-
     name: "AMELA",
-
     city: "OŚWIĘCIM",
-
     country: "POLAND",
-
     language: "en",
-
     theme: "classic"
-
 };
 
 
 /* =========================
-   LOAD SAVED USER
-   ========================= */
+   LOAD SAVED SETTINGS
+========================= */
 
-let savedUser = null;
+let user = {
+    ...defaultUser
+};
 
 try {
+    const saved = localStorage.getItem("morningNewspaperUser");
 
-    savedUser =
-        JSON.parse(
-            localStorage.getItem(
-                "morningNewspaperUser"
-            )
-        );
-
+    if (saved) {
+        user = {
+            ...defaultUser,
+            ...JSON.parse(saved)
+        };
+    }
 } catch (error) {
-
-    savedUser = null;
-
+    console.error("Could not load settings:", error);
 }
-
-
-let user =
-    savedUser || {
-        ...defaultUser
-    };
 
 
 /* =========================
    TRANSLATIONS
-   ========================= */
+========================= */
 
 const translations = {
 
     en: {
-
         title: "MORNING EDITION",
-
         greeting: "GOOD MORNING",
-
-        welcome:
-            "Your personalized morning newspaper.",
-
+        welcome: "Your personalized morning newspaper.",
         weather: "WEATHER",
 
         now: "Now",
-
         highLow: "High / Low",
-
         rain: "Rain",
-
         wind: "Wind",
-
         sunrise: "Sunrise",
-
         sunset: "Sunset",
 
         world: "WORLD",
-
-        worldTitle:
-            "Your morning news",
-
+        worldTitle: "Your morning news",
         worldText:
             "Important events from around the world, selected and summarized for you.",
 
         science: "SCIENCE",
-
-        scienceTitle:
-            "Science & Space",
-
+        scienceTitle: "Science & Space",
         scienceText:
             "The most interesting scientific developments from the previous night.",
 
         technology: "TECHNOLOGY",
-
-        technologyTitle:
-            "Technology",
-
+        technologyTitle: "Technology",
         technologyText:
             "The latest developments in technology and electronics.",
 
         settings: "SETTINGS",
-
         name: "Your name",
-
         city: "City",
-
         country: "Country",
-
         language: "Language",
-
         theme: "Theme",
 
-        namePlaceholder:
-            "Enter your name",
+        namePlaceholder: "Enter your name",
+        cityPlaceholder: "Enter your city",
+        countryPlaceholder: "Enter your country",
 
-        cityPlaceholder:
-            "Enter your city",
-
-        countryPlaceholder:
-            "Enter your country",
-
-        save:
-            "SAVE SETTINGS",
-
-        footer:
-            "Morning Newspaper"
-
+        save: "SAVE SETTINGS",
+        footer: "Morning Newspaper"
     },
 
 
     pl: {
-
         title: "PORANNE WYDANIE",
-
         greeting: "DZIEŃ DOBRY",
-
-        welcome:
-            "Twoja spersonalizowana poranna gazeta.",
-
+        welcome: "Twoja spersonalizowana poranna gazeta.",
         weather: "POGODA",
 
         now: "Teraz",
-
-        highLow:
-            "Maks. / Min.",
-
+        highLow: "Maks. / Min.",
         rain: "Opady",
-
         wind: "Wiatr",
-
         sunrise: "Wschód",
-
         sunset: "Zachód",
 
         world: "ŚWIAT",
-
-        worldTitle:
-            "Twoje poranne wiadomości",
-
+        worldTitle: "Twoje poranne wiadomości",
         worldText:
             "Najważniejsze wydarzenia ze świata, wybrane i podsumowane specjalnie dla Ciebie.",
 
         science: "NAUKA",
-
-        scienceTitle:
-            "Nauka i kosmos",
-
+        scienceTitle: "Nauka i kosmos",
         scienceText:
             "Najciekawsze wydarzenia naukowe z ostatniej nocy.",
 
         technology: "TECHNOLOGIA",
-
-        technologyTitle:
-            "Technologia",
-
+        technologyTitle: "Technologia",
         technologyText:
             "Najnowsze informacje ze świata technologii i elektroniki.",
 
         settings: "USTAWIENIA",
-
         name: "Twoje imię",
-
         city: "Miasto",
-
         country: "Kraj",
-
         language: "Język",
-
         theme: "Motyw",
 
-        namePlaceholder:
-            "Wpisz swoje imię",
+        namePlaceholder: "Wpisz swoje imię",
+        cityPlaceholder: "Wpisz swoje miasto",
+        countryPlaceholder: "Wpisz swój kraj",
 
-        cityPlaceholder:
-            "Wpisz swoje miasto",
-
-        countryPlaceholder:
-            "Wpisz swój kraj",
-
-        save:
-            "ZAPISZ USTAWIENIA",
-
-        footer:
-            "PORANNA GAZETA"
-
+        save: "ZAPISZ USTAWIENIA",
+        footer: "PORANNA GAZETA"
     },
 
 
     de: {
-
         title: "MORGENAUSGABE",
-
         greeting: "GUTEN MORGEN",
-
-        welcome:
-            "Deine personalisierte Morgenzeitung.",
-
+        welcome: "Deine personalisierte Morgenzeitung.",
         weather: "WETTER",
 
         now: "Jetzt",
-
-        highLow:
-            "Höchst. / Tiefst.",
-
+        highLow: "Höchst. / Tiefst.",
         rain: "Regen",
-
         wind: "Wind",
-
-        sunrise:
-            "Sonnenaufgang",
-
-        sunset:
-            "Sonnenuntergang",
+        sunrise: "Sonnenaufgang",
+        sunset: "Sonnenuntergang",
 
         world: "WELT",
-
-        worldTitle:
-            "Deine Morgennachrichten",
-
+        worldTitle: "Deine Morgennachrichten",
         worldText:
             "Die wichtigsten Ereignisse aus aller Welt, ausgewählt und zusammengefasst.",
 
-        science:
-            "WISSENSCHAFT",
-
-        scienceTitle:
-            "Wissenschaft & Weltraum",
-
+        science: "WISSENSCHAFT",
+        scienceTitle: "Wissenschaft & Weltraum",
         scienceText:
             "Die interessantesten wissenschaftlichen Entwicklungen der letzten Nacht.",
 
-        technology:
-            "TECHNOLOGIE",
-
-        technologyTitle:
-            "Technologie",
-
+        technology: "TECHNOLOGIE",
+        technologyTitle: "Technologie",
         technologyText:
             "Die neuesten Entwicklungen aus Technologie und Elektronik.",
 
-        settings:
-            "EINSTELLUNGEN",
+        settings: "EINSTELLUNGEN",
+        name: "Dein Name",
+        city: "Stadt",
+        country: "Land",
+        language: "Sprache",
+        theme: "Design",
 
-        name:
-            "Dein Name",
+        namePlaceholder: "Gib deinen Namen ein",
+        cityPlaceholder: "Gib deine Stadt ein",
+        countryPlaceholder: "Gib dein Land ein",
 
-        city:
-            "Stadt",
-
-        country:
-            "Land",
-
-        language:
-            "Sprache",
-
-        theme:
-            "Design",
-
-        namePlaceholder:
-            "Gib deinen Namen ein",
-
-        cityPlaceholder:
-            "Gib deine Stadt ein",
-
-        countryPlaceholder:
-            "Gib dein Land ein",
-
-        save:
-            "EINSTELLUNGEN SPEICHERN",
-
-        footer:
-            "MORGENZEITUNG"
-
+        save: "EINSTELLUNGEN SPEICHERN",
+        footer: "MORGENZEITUNG"
     },
 
 
     es: {
+        title: "EDICIÓN MATUTINA",
+        greeting: "BUENOS DÍAS",
+        welcome: "Tu periódico matutino personalizado.",
+        weather: "TIEMPO",
 
-        title:
-            "EDICIÓN MATUTINA",
+        now: "Ahora",
+        highLow: "Máx. / Mín.",
+        rain: "Lluvia",
+        wind: "Viento",
+        sunrise: "Amanecer",
+        sunset: "Atardecer",
 
-        greeting:
-            "BUENOS DÍAS",
-
-        welcome:
-            "Tu periódico matutino personalizado.",
-
-        weather:
-            "TIEMPO",
-
-        now:
-            "Ahora",
-
-        highLow:
-            "Máx. / Mín.",
-
-        rain:
-            "Lluvia",
-
-        wind:
-            "Viento",
-
-        sunrise:
-            "Amanecer",
-
-        sunset:
-            "Atardecer",
-
-        world:
-            "MUNDO",
-
-        worldTitle:
-            "Tus noticias de la mañana",
-
+        world: "MUNDO",
+        worldTitle: "Tus noticias de la mañana",
         worldText:
             "Los acontecimientos más importantes del mundo, seleccionados y resumidos para ti.",
 
-        science:
-            "CIENCIA",
-
-        scienceTitle:
-            "Ciencia y espacio",
-
+        science: "CIENCIA",
+        scienceTitle: "Ciencia y espacio",
         scienceText:
             "Los acontecimientos científicos más interesantes de la última noche.",
 
-        technology:
-            "TECNOLOGÍA",
-
-        technologyTitle:
-            "Tecnología",
-
+        technology: "TECNOLOGÍA",
+        technologyTitle: "Tecnología",
         technologyText:
             "Las últimas novedades del mundo de la tecnología y la electrónica.",
 
-        settings:
-            "AJUSTES",
+        settings: "AJUSTES",
+        name: "Tu nombre",
+        city: "Ciudad",
+        country: "País",
+        language: "Idioma",
+        theme: "Tema",
 
-        name:
-            "Tu nombre",
+        namePlaceholder: "Escribe tu nombre",
+        cityPlaceholder: "Escribe tu ciudad",
+        countryPlaceholder: "Escribe tu país",
 
-        city:
-            "Ciudad",
-
-        country:
-            "País",
-
-        language:
-            "Idioma",
-
-        theme:
-            "Tema",
-
-        namePlaceholder:
-            "Escribe tu nombre",
-
-        cityPlaceholder:
-            "Escribe tu ciudad",
-
-        countryPlaceholder:
-            "Escribe tu país",
-
-        save:
-            "GUARDAR AJUSTES",
-
-        footer:
-            "PERIÓDICO MATUTINO"
-
+        save: "GUARDAR AJUSTES",
+        footer: "PERIÓDICO MATUTINO"
     },
 
 
     fr: {
+        title: "ÉDITION DU MATIN",
+        greeting: "BONJOUR",
+        welcome: "Votre journal du matin personnalisé.",
+        weather: "MÉTÉO",
 
-        title:
-            "ÉDITION DU MATIN",
+        now: "Maintenant",
+        highLow: "Max. / Min.",
+        rain: "Pluie",
+        wind: "Vent",
+        sunrise: "Lever du soleil",
+        sunset: "Coucher du soleil",
 
-        greeting:
-            "BONJOUR",
-
-        welcome:
-            "Votre journal du matin personnalisé.",
-
-        weather:
-            "MÉTÉO",
-
-        now:
-            "Maintenant",
-
-        highLow:
-            "Max. / Min.",
-
-        rain:
-            "Pluie",
-
-        wind:
-            "Vent",
-
-        sunrise:
-            "Lever du soleil",
-
-        sunset:
-            "Coucher du soleil",
-
-        world:
-            "MONDE",
-
-        worldTitle:
-            "Vos actualités du matin",
-
+        world: "MONDE",
+        worldTitle: "Vos actualités du matin",
         worldText:
             "Les événements les plus importants du monde, sélectionnés et résumés pour vous.",
 
-        science:
-            "SCIENCE",
-
-        scienceTitle:
-            "Science et espace",
-
+        science: "SCIENCE",
+        scienceTitle: "Science et espace",
         scienceText:
             "Les développements scientifiques les plus intéressants de la nuit dernière.",
 
-        technology:
-            "TECHNOLOGIE",
-
-        technologyTitle:
-            "Technologie",
-
+        technology: "TECHNOLOGIE",
+        technologyTitle: "Technologie",
         technologyText:
             "Les dernières nouveautés dans le monde de la technologie et de l'électronique.",
 
-        settings:
-            "PARAMÈTRES",
+        settings: "PARAMÈTRES",
+        name: "Votre nom",
+        city: "Ville",
+        country: "Pays",
+        language: "Langue",
+        theme: "Thème",
 
-        name:
-            "Votre nom",
+        namePlaceholder: "Entrez votre nom",
+        cityPlaceholder: "Entrez votre ville",
+        countryPlaceholder: "Entrez votre pays",
 
-        city:
-            "Ville",
-
-        country:
-            "Pays",
-
-        language:
-            "Langue",
-
-        theme:
-            "Thème",
-
-        namePlaceholder:
-            "Entrez votre nom",
-
-        cityPlaceholder:
-            "Entrez votre ville",
-
-        countryPlaceholder:
-            "Entrez votre pays",
-
-        save:
-            "ENREGISTRER",
-
-        footer:
-            "JOURNAL DU MATIN"
-
+        save: "ENREGISTRER",
+        footer: "JOURNAL DU MATIN"
     }
 
 };
@@ -489,273 +263,153 @@ const translations = {
 
 /* =========================
    LANGUAGE
-   ========================= */
+========================= */
 
 function updateLanguage() {
 
     const language =
-        translations[user.language] ||
-        translations.en;
+        translations[user.language] || translations.en;
 
-
-    document.getElementById(
-        "newspaper-title"
-    ).textContent =
+    document.getElementById("newspaper-title").textContent =
         language.title;
 
-
-    document.getElementById(
-        "greeting"
-    ).textContent =
+    document.getElementById("greeting").textContent =
         `${language.greeting}, ${user.name}`;
 
-
-    document.getElementById(
-        "welcome-text"
-    ).textContent =
+    document.getElementById("welcome-text").textContent =
         language.welcome;
 
-
-    document.getElementById(
-        "weather-title"
-    ).textContent =
+    document.getElementById("weather-title").textContent =
         language.weather;
 
-
-    document.getElementById(
-        "now-label"
-    ).textContent =
+    document.getElementById("now-label").textContent =
         language.now;
 
-
-    document.getElementById(
-        "high-low-label"
-    ).textContent =
+    document.getElementById("high-low-label").textContent =
         language.highLow;
 
-
-    document.getElementById(
-        "rain-label"
-    ).textContent =
+    document.getElementById("rain-label").textContent =
         language.rain;
 
-
-    document.getElementById(
-        "wind-label"
-    ).textContent =
+    document.getElementById("wind-label").textContent =
         language.wind;
 
-
-    document.getElementById(
-        "sunrise-label"
-    ).textContent =
+    document.getElementById("sunrise-label").textContent =
         language.sunrise;
 
-
-    document.getElementById(
-        "sunset-label"
-    ).textContent =
+    document.getElementById("sunset-label").textContent =
         language.sunset;
 
-
-    document.getElementById(
-        "world-category"
-    ).textContent =
+    document.getElementById("world-category").textContent =
         language.world;
 
-
-    document.getElementById(
-        "world-title"
-    ).textContent =
+    document.getElementById("world-title").textContent =
         language.worldTitle;
 
-
-    document.getElementById(
-        "world-text"
-    ).textContent =
+    document.getElementById("world-text").textContent =
         language.worldText;
 
-
-    document.getElementById(
-        "science-category"
-    ).textContent =
+    document.getElementById("science-category").textContent =
         language.science;
 
-
-    document.getElementById(
-        "science-title"
-    ).textContent =
+    document.getElementById("science-title").textContent =
         language.scienceTitle;
 
-
-    document.getElementById(
-        "science-text"
-    ).textContent =
+    document.getElementById("science-text").textContent =
         language.scienceText;
 
-
-    document.getElementById(
-        "technology-category"
-    ).textContent =
+    document.getElementById("technology-category").textContent =
         language.technology;
 
-
-    document.getElementById(
-        "technology-title"
-    ).textContent =
+    document.getElementById("technology-title").textContent =
         language.technologyTitle;
 
-
-    document.getElementById(
-        "technology-text"
-    ).textContent =
+    document.getElementById("technology-text").textContent =
         language.technologyText;
 
-
-    document.getElementById(
-        "settings-title"
-    ).textContent =
+    document.getElementById("settings-title").textContent =
         language.settings;
 
-
-    document.getElementById(
-        "name-label"
-    ).textContent =
+    document.getElementById("name-label").textContent =
         language.name;
 
-
-    document.getElementById(
-        "city-label"
-    ).textContent =
+    document.getElementById("city-label").textContent =
         language.city;
 
-
-    document.getElementById(
-        "country-label"
-    ).textContent =
+    document.getElementById("country-label").textContent =
         language.country;
 
-
-    document.getElementById(
-        "language-label"
-    ).textContent =
+    document.getElementById("language-label").textContent =
         language.language;
 
-
-    document.getElementById(
-        "theme-label"
-    ).textContent =
+    document.getElementById("theme-label").textContent =
         language.theme;
 
-
-    document.getElementById(
-        "name"
-    ).placeholder =
+    document.getElementById("name").placeholder =
         language.namePlaceholder;
 
-
-    document.getElementById(
-        "city"
-    ).placeholder =
+    document.getElementById("city").placeholder =
         language.cityPlaceholder;
 
-
-    document.getElementById(
-        "country"
-    ).placeholder =
+    document.getElementById("country").placeholder =
         language.countryPlaceholder;
 
-
-    document.getElementById(
-        "save-settings"
-    ).textContent =
+    document.getElementById("save-settings").textContent =
         language.save;
 
-
-    document.getElementById(
-        "footer-text"
-    ).textContent =
+    document.getElementById("footer-text").textContent =
         language.footer;
-
 }
 
 
 /* =========================
    DATE
-   ========================= */
+========================= */
 
 function updateDate() {
 
-    const today =
-        new Date();
-
-
-    const options = {
-
-        day: "numeric",
-
-        month: "long",
-
-        year: "numeric"
-
-    };
-
+    const today = new Date();
 
     const locales = {
-
         en: "en-US",
-
         pl: "pl-PL",
-
         de: "de-DE",
-
         es: "es-ES",
-
         fr: "fr-FR"
-
     };
 
+    const options = {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    };
 
-    const formattedDate =
+    const date =
         today.toLocaleDateString(
-            locales[user.language] ||
-            "en-US",
+            locales[user.language] || "en-US",
             options
         );
 
-
-    document.getElementById(
-        "date"
-    ).textContent =
-        formattedDate.toUpperCase();
-
+    document.getElementById("date").textContent =
+        date.toUpperCase();
 }
 
 
 /* =========================
    THEME
-   ========================= */
+========================= */
 
 function updateTheme() {
 
     const themes = [
-
         "classic",
-
         "forest",
-
         "burgundy",
-
         "navy",
-
         "chocolate",
-
         "rose",
-
         "monochrome"
-
     ];
-
 
     themes.forEach(theme => {
 
@@ -765,159 +419,166 @@ function updateTheme() {
 
     });
 
-
     const selectedTheme =
         themes.includes(user.theme)
             ? user.theme
             : "classic";
 
-
     document.body.classList.add(
         `theme-${selectedTheme}`
     );
-
 }
 
 
 /* =========================
    UPDATE NEWSPAPER
-   ========================= */
+========================= */
 
 function updateNewspaper() {
 
-    document.getElementById(
-        "location"
-    ).textContent =
+    document.getElementById("location").textContent =
         `${user.city}, ${user.country}`;
 
-
-    document.getElementById(
-        "name"
-    ).value =
+    document.getElementById("name").value =
         user.name;
 
-
-    document.getElementById(
-        "city"
-    ).value =
+    document.getElementById("city").value =
         user.city;
 
-
-    document.getElementById(
-        "country"
-    ).value =
+    document.getElementById("country").value =
         user.country;
 
-
-    document.getElementById(
-        "language"
-    ).value =
+    document.getElementById("language").value =
         user.language;
 
-
-    document.getElementById(
-        "theme"
-    ).value =
+    document.getElementById("theme").value =
         user.theme;
 
-
     updateTheme();
-
     updateLanguage();
-
     updateDate();
+}
 
+
+/* =========================
+   RESET WEATHER
+========================= */
+
+function resetWeather() {
+
+    document.getElementById("temperature").textContent =
+        "--°C";
+
+    document.getElementById("high-low").textContent =
+        "--° / --°";
+
+    document.getElementById("rain").textContent =
+        "--%";
+
+    document.getElementById("wind").textContent =
+        "-- km/h";
+
+    document.getElementById("sunrise").textContent =
+        "--:--";
+
+    document.getElementById("sunset").textContent =
+        "--:--";
 }
 
 
 /* =========================
    WEATHER
-   ========================= */
+========================= */
 
 async function updateWeather() {
-   alert("POGODA STARTUJE");
+
+    resetWeather();
 
     const city =
-        user.city;
+        user.city.trim();
 
     const country =
-        user.country;
+        user.country.trim();
 
-
-    if (!city || !country) {
-
+    if (!city) {
         return;
-
     }
-
 
     try {
 
+        /*
+         * First find the city.
+         */
+
+        const locationURL =
+            "https://geocoding-api.open-meteo.com/v1/search" +
+            "?name=" +
+            encodeURIComponent(city) +
+            "&count=1" +
+            "&language=en" +
+            "&format=json";
+
         const locationResponse =
-            await fetch(
-                `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city + ", " + country)}&count=1&language=en&format=json`
-            );
+            await fetch(locationURL);
 
-alert("API ODPOWIADA");
         if (!locationResponse.ok) {
-
             throw new Error(
-                "Location request failed"
+                "Could not connect to the geocoding service."
             );
-
         }
-
 
         const locationData =
             await locationResponse.json();
-
 
         if (
             !locationData.results ||
             locationData.results.length === 0
         ) {
-
-            console.log(
-                "City not found:",
-                city,
-                country
+            throw new Error(
+                `Could not find the city: ${city}, ${country}`
             );
-
-            return;
-
         }
-
 
         const location =
             locationData.results[0];
 
-
         const latitude =
             location.latitude;
-
 
         const longitude =
             location.longitude;
 
 
-        const weatherResponse =
-            await fetch(
-                `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset&timezone=auto`
-            );
+        /*
+         * Now get the weather.
+         */
 
+        const weatherURL =
+            "https://api.open-meteo.com/v1/forecast" +
+            "?latitude=" +
+            latitude +
+            "&longitude=" +
+            longitude +
+            "&current=temperature_2m,wind_speed_10m" +
+            "&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset" +
+            "&timezone=auto";
+
+        const weatherResponse =
+            await fetch(weatherURL);
 
         if (!weatherResponse.ok) {
-
             throw new Error(
-                "Weather request failed"
+                "Could not connect to the weather service."
             );
-
         }
-
 
         const weatherData =
             await weatherResponse.json();
 
+
+        /*
+         * Current temperature
+         */
 
         const temperature =
             Math.round(
@@ -925,11 +586,19 @@ alert("API ODPOWIADA");
             );
 
 
+        /*
+         * Maximum temperature
+         */
+
         const high =
             Math.round(
                 weatherData.daily.temperature_2m_max[0]
             );
 
+
+        /*
+         * Minimum temperature
+         */
 
         const low =
             Math.round(
@@ -937,10 +606,18 @@ alert("API ODPOWIADA");
             );
 
 
+        /*
+         * Rain probability
+         */
+
         const rain =
             weatherData.daily
                 .precipitation_probability_max[0];
 
+
+        /*
+         * Wind
+         */
 
         const wind =
             Math.round(
@@ -948,53 +625,51 @@ alert("API ODPOWIADA");
             );
 
 
-        const sunrise =
-            weatherData.daily
-                .sunrise[0]
-                .slice(11, 16);
+        /*
+         * Sunrise
+         */
 
+        const sunrise =
+            weatherData.daily.sunrise[0]
+                .substring(11, 16);
+
+
+        /*
+         * Sunset
+         */
 
         const sunset =
-            weatherData.daily
-                .sunset[0]
-                .slice(11, 16);
+            weatherData.daily.sunset[0]
+                .substring(11, 16);
 
 
-        document.getElementById(
-            "temperature"
-        ).textContent =
+        /*
+         * Put weather on the newspaper
+         */
+
+        document.getElementById("temperature").textContent =
             `${temperature}°C`;
 
-
-        document.getElementById(
-            "high-low"
-        ).textContent =
+        document.getElementById("high-low").textContent =
             `${high}° / ${low}°`;
 
-
-        document.getElementById(
-            "rain"
-        ).textContent =
+        document.getElementById("rain").textContent =
             `${rain}%`;
 
-
-        document.getElementById(
-            "wind"
-        ).textContent =
+        document.getElementById("wind").textContent =
             `${wind} km/h`;
 
-
-        document.getElementById(
-            "sunrise"
-        ).textContent =
+        document.getElementById("sunrise").textContent =
             sunrise;
 
-
-        document.getElementById(
-            "sunset"
-        ).textContent =
+        document.getElementById("sunset").textContent =
             sunset;
 
+
+        console.log(
+            "Weather loaded successfully:",
+            weatherData
+        );
 
     } catch (error) {
 
@@ -1004,79 +679,64 @@ alert("API ODPOWIADA");
         );
 
     }
-
 }
 
 
 /* =========================
    SAVE SETTINGS
-   ========================= */
+========================= */
 
 function saveSettings() {
 
-    const nameInput =
-        document.getElementById(
-            "name"
-        ).value.trim();
+    const name =
+        document.getElementById("name")
+            .value
+            .trim();
+
+    const city =
+        document.getElementById("city")
+            .value
+            .trim();
+
+    const country =
+        document.getElementById("country")
+            .value
+            .trim();
+
+    const language =
+        document.getElementById("language")
+            .value;
+
+    const theme =
+        document.getElementById("theme")
+            .value;
 
 
-    const cityInput =
-        document.getElementById(
-            "city"
-        ).value.trim();
-
-
-    const countryInput =
-        document.getElementById(
-            "country"
-        ).value.trim();
-
-
-    const languageInput =
-        document.getElementById(
-            "language"
-        ).value;
-
-
-    const themeInput =
-        document.getElementById(
-            "theme"
-        ).value;
-
-
-    if (nameInput !== "") {
-
+    if (name) {
         user.name =
-            nameInput.toUpperCase();
-
+            name.toUpperCase();
     }
 
-
-    if (cityInput !== "") {
-
+    if (city) {
         user.city =
-            cityInput.toUpperCase();
-
+            city.toUpperCase();
     }
 
-
-    if (countryInput !== "") {
-
+    if (country) {
         user.country =
-            countryInput.toUpperCase();
-
+            country.toUpperCase();
     }
-
 
     user.language =
-        languageInput;
-
+        language;
 
     user.theme =
-        themeInput;
+        theme;
 
 
-    /* SAVE */
+    /*
+     * Save in browser
+     */
 
     try {
 
@@ -1095,31 +755,39 @@ function saveSettings() {
     }
 
 
-    /* UPDATE */
+    /*
+     * Update newspaper
+     */
 
     updateNewspaper();
 
     updateWeather();
-
 }
 
 
 /* =========================
-   START
-   ========================= */
+   START APPLICATION
+========================= */
 
-document
-    .getElementById(
-        "save-settings"
-    )
-    .addEventListener(
-        "click",
-        saveSettings
-    );
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
+        const saveButton =
+            document.getElementById("save-settings");
 
-updateNewspaper();
+        if (saveButton) {
 
-alert("DOSZŁO DO POGODY");
+            saveButton.addEventListener(
+                "click",
+                saveSettings
+            );
 
-updateWeather();
+        }
+
+        updateNewspaper();
+
+        updateWeather();
+
+    }
+);
