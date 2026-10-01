@@ -1120,4 +1120,6 @@ document
 
 updateNewspaper();
 
+alert("DOSZŁO DO POGODY");
+
 updateWeather();
