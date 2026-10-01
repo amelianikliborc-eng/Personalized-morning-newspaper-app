@@ -3,14 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Morning Newspaper</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -19,9 +13,7 @@
     <main class="newspaper">
 
         <!-- HEADER -->
-
         <header class="newspaper-header">
-
             <p class="location" id="location">
                 OŚWIĘCIM, POLAND
             </p>
@@ -31,14 +23,11 @@
             <p class="date" id="date">
                 30 SEPTEMBER 2026
             </p>
-
         </header>
 
 
         <!-- GREETING -->
-
         <section class="welcome">
-
             <h2 id="greeting">
                 GOOD MORNING, AMELA
             </h2>
@@ -46,14 +35,11 @@
             <p>
                 Your personalized morning newspaper.
             </p>
-
         </section>
 
 
         <!-- WEATHER -->
-
         <section class="weather">
-
             <h2>WEATHER</h2>
 
             <div class="weather-content">
@@ -63,34 +49,36 @@
                         18°C
                     </strong>
 
-                    <span>Now</span>
+                    <span>
+                        Now
+                    </span>
                 </div>
-
 
                 <div>
                     <strong id="high-low">
                         24° / 14°
                     </strong>
 
-                    <span>High / Low</span>
+                    <span>
+                        High / Low
+                    </span>
                 </div>
-
 
                 <div>
                     <strong id="rain">
                         20%
                     </strong>
 
-                    <span>Rain</span>
+                    <span>
+                        Rain
+                    </span>
                 </div>
 
             </div>
-
         </section>
 
 
         <!-- NEWS -->
-
         <section class="news">
 
             <article class="main-story">
@@ -149,8 +137,84 @@
         </section>
 
 
-        <!-- FOOTER -->
+        <!-- SETTINGS -->
+        <section class="settings">
 
+            <h2>
+                SETTINGS
+            </h2>
+
+
+            <label for="name">
+                Your name
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+            >
+
+
+            <label for="city">
+                City
+            </label>
+
+            <input
+                type="text"
+                id="city"
+                placeholder="Enter your city"
+            >
+
+
+            <label for="country">
+                Country
+            </label>
+
+            <input
+                type="text"
+                id="country"
+                placeholder="Enter your country"
+            >
+
+
+            <label for="language">
+                Language
+            </label>
+
+            <select id="language">
+
+                <option value="en">
+                    English
+                </option>
+
+                <option value="pl">
+                    Polski
+                </option>
+
+                <option value="de">
+                    Deutsch
+                </option>
+
+                <option value="es">
+                    Español
+                </option>
+
+                <option value="fr">
+                    Français
+                </option>
+
+            </select>
+
+
+            <button id="save-settings">
+                SAVE SETTINGS
+            </button>
+
+        </section>
+
+
+        <!-- FOOTER -->
         <footer>
 
             <p>
