@@ -858,7 +858,7 @@ async function updateWeather() {
                 `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city + ", " + country)}&count=1&language=en&format=json`
             );
 
-
+alert("API ODPOWIADA");
         if (!locationResponse.ok) {
 
             throw new Error(
