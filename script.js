@@ -1,3 +1,7 @@
+/* =========================
+   DEFAULT USER
+   ========================= */
+
 const defaultUser = {
 
     name: "AMELA",
@@ -13,12 +17,33 @@ const defaultUser = {
 };
 
 
+/* =========================
+   LOAD SAVED USER
+   ========================= */
+
+let savedUser = null;
+
+try {
+
+    savedUser =
+        JSON.parse(
+            localStorage.getItem(
+                "morningNewspaperUser"
+            )
+        );
+
+} catch (error) {
+
+    savedUser = null;
+
+}
+
+
 let user =
-    JSON.parse(
-        localStorage.getItem("morningNewspaperUser")
-    ) || {
+    savedUser || {
         ...defaultUser
     };
+
 
 /* =========================
    TRANSLATIONS
@@ -99,6 +124,7 @@ const translations = {
 
         footer:
             "Morning Newspaper"
+
     },
 
 
@@ -115,7 +141,8 @@ const translations = {
 
         now: "Teraz",
 
-        highLow: "Maks. / Min.",
+        highLow:
+            "Maks. / Min.",
 
         rain: "Opady",
 
@@ -174,7 +201,8 @@ const translations = {
             "ZAPISZ USTAWIENIA",
 
         footer:
-            "Poranna Gazeta"
+            "PORANNA GAZETA"
+
     },
 
 
@@ -261,7 +289,8 @@ const translations = {
             "EINSTELLUNGEN SPEICHERN",
 
         footer:
-            "Morgenzeitung"
+            "MORGENZEITUNG"
+
     },
 
 
@@ -355,7 +384,8 @@ const translations = {
             "GUARDAR AJUSTES",
 
         footer:
-            "Periódico Matutino"
+            "PERIÓDICO MATUTINO"
+
     },
 
 
@@ -449,7 +479,8 @@ const translations = {
             "ENREGISTRER",
 
         footer:
-            "Journal du Matin"
+            "JOURNAL DU MATIN"
+
     }
 
 };
@@ -644,6 +675,7 @@ function updateLanguage() {
         "footer-text"
     ).textContent =
         language.footer;
+
 }
 
 
@@ -695,6 +727,7 @@ function updateDate() {
         "date"
     ).textContent =
         formattedDate.toUpperCase();
+
 }
 
 
@@ -741,13 +774,13 @@ function updateTheme() {
     document.body.classList.add(
         `theme-${selectedTheme}`
     );
+
 }
 
 
 /* =========================
-   NEWSPAPER
+   UPDATE NEWSPAPER
    ========================= */
-
 
 function updateNewspaper() {
 
@@ -756,37 +789,45 @@ function updateNewspaper() {
     ).textContent =
         `${user.city}, ${user.country}`;
 
+
     document.getElementById(
         "name"
     ).value =
         user.name;
+
 
     document.getElementById(
         "city"
     ).value =
         user.city;
 
+
     document.getElementById(
         "country"
     ).value =
         user.country;
+
 
     document.getElementById(
         "language"
     ).value =
         user.language;
 
+
     document.getElementById(
         "theme"
     ).value =
         user.theme;
+
 
     updateTheme();
 
     updateLanguage();
 
     updateDate();
+
 }
+
 
 /* =========================
    WEATHER
@@ -801,12 +842,28 @@ async function updateWeather() {
         user.country;
 
 
+    if (!city || !country) {
+
+        return;
+
+    }
+
+
     try {
 
         const locationResponse =
             await fetch(
                 `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city + ", " + country)}&count=1&language=en&format=json`
             );
+
+
+        if (!locationResponse.ok) {
+
+            throw new Error(
+                "Location request failed"
+            );
+
+        }
 
 
         const locationData =
@@ -817,6 +874,12 @@ async function updateWeather() {
             !locationData.results ||
             locationData.results.length === 0
         ) {
+
+            console.log(
+                "City not found:",
+                city,
+                country
+            );
 
             return;
 
@@ -839,6 +902,15 @@ async function updateWeather() {
             await fetch(
                 `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset&timezone=auto`
             );
+
+
+        if (!weatherResponse.ok) {
+
+            throw new Error(
+                "Weather request failed"
+            );
+
+        }
 
 
         const weatherData =
@@ -930,6 +1002,7 @@ async function updateWeather() {
         );
 
     }
+
 }
 
 
@@ -993,22 +1066,40 @@ function saveSettings() {
     }
 
 
-  user.language =
-    languageInput;
-
-user.theme =
-    themeInput;
+    user.language =
+        languageInput;
 
 
-localStorage.setItem(
-    "morningNewspaperUser",
-    JSON.stringify(user)
-);
+    user.theme =
+        themeInput;
 
 
-updateNewspaper();
+    /* SAVE */
 
-updateWeather();
+    try {
+
+        localStorage.setItem(
+            "morningNewspaperUser",
+            JSON.stringify(user)
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Could not save settings:",
+            error
+        );
+
+    }
+
+
+    /* UPDATE */
+
+    updateNewspaper();
+
+    updateWeather();
+
+}
 
 
 /* =========================
