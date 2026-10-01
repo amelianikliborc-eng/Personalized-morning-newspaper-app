@@ -1,4 +1,4 @@
-alert("JAVASCRIPT DZIAŁA");
+
 /* =========================
    DEFAULT USER
    ========================= */
@@ -835,6 +835,7 @@ function updateNewspaper() {
    ========================= */
 
 async function updateWeather() {
+   alert("POGODA STARTUJE");
 
     const city =
         user.city;
