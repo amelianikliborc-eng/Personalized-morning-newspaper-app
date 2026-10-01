@@ -45,8 +45,6 @@ async function updateWeather() {
 
     try {
 
-        // 1. Znajdujemy współrzędne miasta
-
         const locationResponse = await fetch(
             `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city + ", " + country)}&count=1&language=en&format=json`
         );
@@ -60,52 +58,68 @@ async function updateWeather() {
             document.getElementById("temperature").textContent = "--°C";
             document.getElementById("high-low").textContent = "--° / --°";
             document.getElementById("rain").textContent = "--%";
+            document.getElementById("wind").textContent = "-- km/h";
+            document.getElementById("sunrise").textContent = "--:--";
+            document.getElementById("sunset").textContent = "--:--";
 
             return;
         }
 
 
-        const location = locationData.results[0];
+        const location =
+            locationData.results[0];
 
-        const latitude = location.latitude;
-        const longitude = location.longitude;
+        const latitude =
+            location.latitude;
 
+        const longitude =
+            location.longitude;
 
-        // 2. Pobieramy pogodę dla znalezionych współrzędnych
 
         const weatherResponse = await fetch(
-            `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=auto`
+            `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset&timezone=auto`
         );
+
 
         const weatherData =
             await weatherResponse.json();
 
 
-        // 3. Aktualna temperatura
-
         const temperature =
-            Math.round(weatherData.current.temperature_2m);
+            Math.round(
+                weatherData.current.temperature_2m
+            );
 
-
-        // 4. Temperatura maksymalna
 
         const high =
-            Math.round(weatherData.daily.temperature_2m_max[0]);
+            Math.round(
+                weatherData.daily.temperature_2m_max[0]
+            );
 
-
-        // 5. Temperatura minimalna
 
         const low =
-            Math.round(weatherData.daily.temperature_2m_min[0]);
+            Math.round(
+                weatherData.daily.temperature_2m_min[0]
+            );
 
-
-        // 6. Prawdopodobieństwo opadów
 
         const rain =
             weatherData.daily.precipitation_probability_max[0];
 
 
-        // 7. Wstawiamy dane do gazety
+        const wind =
+            Math.round(
+                weatherData.current.wind_speed_10m
+            );
+
+
+        const sunrise =
+            weatherData.daily.sunrise[0].slice(11, 16);
+
+
+        const sunset =
+            weatherData.daily.sunset[0].slice(11, 16);
+
 
         document.getElementById("temperature").textContent =
             `${temperature}°C`;
@@ -116,18 +130,20 @@ async function updateWeather() {
         document.getElementById("rain").textContent =
             `${rain}%`;
 
+        document.getElementById("wind").textContent =
+            `${wind} km/h`;
+
+        document.getElementById("sunrise").textContent =
+            sunrise;
+
+        document.getElementById("sunset").textContent =
+            sunset;
+
+
     } catch (error) {
 
         console.error("Weather error:", error);
 
-        document.getElementById("temperature").textContent =
-            "--°C";
-
-        document.getElementById("high-low").textContent =
-            "--° / --°";
-
-        document.getElementById("rain").textContent =
-            "--%";
     }
 }
 
@@ -148,18 +164,25 @@ function saveSettings() {
 
 
     if (nameInput !== "") {
-        user.name = nameInput.toUpperCase();
+        user.name =
+            nameInput.toUpperCase();
     }
+
 
     if (cityInput !== "") {
-        user.city = cityInput.toUpperCase();
+        user.city =
+            cityInput.toUpperCase();
     }
+
 
     if (countryInput !== "") {
-        user.country = countryInput.toUpperCase();
+        user.country =
+            countryInput.toUpperCase();
     }
 
-    user.language = languageInput;
+
+    user.language =
+        languageInput;
 
 
     updateNewspaper();
