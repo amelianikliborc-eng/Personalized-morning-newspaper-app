@@ -10,9 +10,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="theme-classic">
 
     <main class="newspaper">
+
+        <!-- HEADER -->
 
         <header class="newspaper-header">
 
@@ -31,6 +33,8 @@
         </header>
 
 
+        <!-- WELCOME -->
+
         <section class="welcome">
 
             <h2 id="greeting">
@@ -44,6 +48,8 @@
         </section>
 
 
+        <!-- WEATHER -->
+
         <section class="weather">
 
             <h2 id="weather-title">
@@ -52,32 +58,32 @@
 
             <div class="weather-content">
 
-                <div>
+                <div class="weather-item">
                     <strong id="temperature">--°C</strong>
                     <span id="now-label">Now</span>
                 </div>
 
-                <div>
+                <div class="weather-item">
                     <strong id="high-low">--° / --°</strong>
                     <span id="high-low-label">High / Low</span>
                 </div>
 
-                <div>
+                <div class="weather-item">
                     <strong id="rain">--%</strong>
                     <span id="rain-label">Rain</span>
                 </div>
 
-                <div>
+                <div class="weather-item">
                     <strong id="wind">-- km/h</strong>
                     <span id="wind-label">Wind</span>
                 </div>
 
-                <div>
+                <div class="weather-item">
                     <strong id="sunrise">--:--</strong>
                     <span id="sunrise-label">Sunrise</span>
                 </div>
 
-                <div>
+                <div class="weather-item">
                     <strong id="sunset">--:--</strong>
                     <span id="sunset-label">Sunset</span>
                 </div>
@@ -86,6 +92,8 @@
 
         </section>
 
+
+        <!-- NEWS -->
 
         <section class="news">
 
@@ -144,6 +152,8 @@
 
         </section>
 
+
+        <!-- SETTINGS -->
 
         <section class="settings">
 
@@ -254,12 +264,17 @@
             </select>
 
 
-            <button id="save-settings">
+            <button
+                type="button"
+                id="save-settings"
+            >
                 SAVE SETTINGS
             </button>
 
         </section>
 
+
+        <!-- FOOTER -->
 
         <footer>
 
@@ -272,7 +287,9 @@
     </main>
 
 
-       <script src="script.js"></script>
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
 
 </body>
 
