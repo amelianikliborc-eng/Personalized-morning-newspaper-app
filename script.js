@@ -13,10 +13,12 @@ const defaultUser = {
 };
 
 
-let user = {
-    ...defaultUser
-};
-
+let user =
+    JSON.parse(
+        localStorage.getItem("morningNewspaperUser")
+    ) || {
+        ...defaultUser
+    };
 
 /* =========================
    TRANSLATIONS
@@ -973,8 +975,13 @@ function saveSettings() {
 
     user.theme =
         themeInput;
+    
 
-
+localStorage.setItem(
+    "morningNewspaperUser",
+    JSON.stringify(user)
+);
+    
     updateNewspaper();
 
     updateWeather();
