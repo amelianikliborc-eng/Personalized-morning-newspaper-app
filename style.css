@@ -263,3 +263,67 @@ footer {
     }
 
 }
+/* THEMES */
+
+body.theme-classic {
+    background: #d8d0c2;
+    color: #171512;
+}
+
+body.theme-classic .newspaper {
+    background: #f5f0e6;
+}
+
+body.theme-forest {
+    background: #c9cec5;
+    color: #172018;
+}
+
+body.theme-forest .newspaper {
+    background: #f1f0e7;
+}
+
+body.theme-burgundy {
+    background: #d6c5c1;
+    color: #32171c;
+}
+
+body.theme-burgundy .newspaper {
+    background: #f4eee7;
+}
+
+body.theme-navy {
+    background: #c8ced5;
+    color: #182433;
+}
+
+body.theme-navy .newspaper {
+    background: #f3f1eb;
+}
+
+body.theme-chocolate {
+    background: #d5c5b2;
+    color: #33251b;
+}
+
+body.theme-chocolate .newspaper {
+    background: #f1e5d3;
+}
+
+body.theme-rose {
+    background: #ded0d1;
+    color: #35272b;
+}
+
+body.theme-rose .newspaper {
+    background: #f7f0eb;
+}
+
+body.theme-monochrome {
+    background: #cfcfcf;
+    color: #111111;
+}
+
+body.theme-monochrome .newspaper {
+    background: #f5f5f5;
+}
