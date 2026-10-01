@@ -38,6 +38,7 @@ const translations = {
         city: "City",
         country: "Country",
         language: "Language",
+        theme: "Theme",
         namePlaceholder: "Enter your name",
         cityPlaceholder: "Enter your city",
         countryPlaceholder: "Enter your country",
@@ -70,6 +71,7 @@ const translations = {
         city: "Miasto",
         country: "Kraj",
         language: "Język",
+        theme: "Motyw",
         namePlaceholder: "Wpisz swoje imię",
         cityPlaceholder: "Wpisz swoje miasto",
         countryPlaceholder: "Wpisz swój kraj",
@@ -102,6 +104,7 @@ const translations = {
         city: "Stadt",
         country: "Land",
         language: "Sprache",
+        theme: "Design",
         namePlaceholder: "Gib deinen Namen ein",
         cityPlaceholder: "Gib deine Stadt ein",
         countryPlaceholder: "Gib dein Land ein",
@@ -134,6 +137,7 @@ const translations = {
         city: "Ciudad",
         country: "País",
         language: "Idioma",
+        theme: "Tema",
         namePlaceholder: "Escribe tu nombre",
         cityPlaceholder: "Escribe tu ciudad",
         countryPlaceholder: "Escribe tu país",
@@ -166,6 +170,7 @@ const translations = {
         city: "Ville",
         country: "Pays",
         language: "Langue",
+        theme: "Thème",
         namePlaceholder: "Entrez votre nom",
         cityPlaceholder: "Entrez votre ville",
         countryPlaceholder: "Entrez votre pays",
@@ -211,7 +216,6 @@ function updateLanguage() {
     document.getElementById("sunset-label").textContent =
         language.sunset;
 
-
     document.getElementById("world-category").textContent =
         language.world;
 
@@ -220,7 +224,6 @@ function updateLanguage() {
 
     document.getElementById("world-text").textContent =
         language.worldText;
-
 
     document.getElementById("science-category").textContent =
         language.science;
@@ -231,7 +234,6 @@ function updateLanguage() {
     document.getElementById("science-text").textContent =
         language.scienceText;
 
-
     document.getElementById("technology-category").textContent =
         language.technology;
 
@@ -240,7 +242,6 @@ function updateLanguage() {
 
     document.getElementById("technology-text").textContent =
         language.technologyText;
-
 
     document.getElementById("settings-title").textContent =
         language.settings;
@@ -257,6 +258,8 @@ function updateLanguage() {
     document.getElementById("language-label").textContent =
         language.language;
 
+    document.getElementById("theme-label").textContent =
+        language.theme;
 
     document.getElementById("name").placeholder =
         language.namePlaceholder;
@@ -266,7 +269,6 @@ function updateLanguage() {
 
     document.getElementById("country").placeholder =
         language.countryPlaceholder;
-
 
     document.getElementById("save-settings").textContent =
         language.save;
@@ -286,22 +288,49 @@ function updateDate() {
         year: "numeric"
     };
 
+    const locales = {
+        en: "en-US",
+        pl: "pl-PL",
+        de: "de-DE",
+        es: "es-ES",
+        fr: "fr-FR"
+    };
+
     const formattedDate =
-    today.toLocaleDateString(
-        user.language === "pl"
-            ? "pl-PL"
-            : user.language === "de"
-            ? "de-DE"
-            : user.language === "es"
-            ? "es-ES"
-            : user.language === "fr"
-            ? "fr-FR"
-            : "en-US",
-        options
-    );
+        today.toLocaleDateString(
+            locales[user.language] || "en-US",
+            options
+        );
 
     document.getElementById("date").textContent =
         formattedDate.toUpperCase();
+}
+
+
+function updateTheme() {
+
+    const themes = [
+        "classic",
+        "forest",
+        "burgundy",
+        "navy",
+        "chocolate",
+        "rose",
+        "monochrome"
+    ];
+
+    themes.forEach(theme => {
+        document.body.classList.remove(`theme-${theme}`);
+    });
+
+    const selectedTheme =
+        themes.includes(user.theme)
+            ? user.theme
+            : "classic";
+
+    document.body.classList.add(
+        `theme-${selectedTheme}`
+    );
 }
 
 
@@ -310,20 +339,7 @@ function updateNewspaper() {
     document.getElementById("location").textContent =
         `${user.city}, ${user.country}`;
 
-    document.body.classList.remove(
-        "theme-classic",
-        "theme-forest",
-        "theme-burgundy",
-        "theme-navy",
-        "theme-chocolate",
-        "theme-rose",
-        "theme-monochrome"
-    );
-
-    document.body.classList.add(
-        `theme-${user.theme}`
-    );
-
+    updateTheme();
     updateLanguage();
     updateDate();
 }
@@ -343,13 +359,10 @@ async function updateWeather() {
         const locationData =
             await locationResponse.json();
 
-
         if (!locationData.results ||
             locationData.results.length === 0) {
-
             return;
         }
-
 
         const location =
             locationData.results[0];
@@ -360,15 +373,12 @@ async function updateWeather() {
         const longitude =
             location.longitude;
 
-
         const weatherResponse = await fetch(
             `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset&timezone=auto`
         );
 
-
         const weatherData =
             await weatherResponse.json();
-
 
         const temperature =
             Math.round(
@@ -399,7 +409,6 @@ async function updateWeather() {
         const sunset =
             weatherData.daily.sunset[0].slice(11, 16);
 
-
         document.getElementById("temperature").textContent =
             `${temperature}°C`;
 
@@ -417,7 +426,6 @@ async function updateWeather() {
 
         document.getElementById("sunset").textContent =
             sunset;
-
 
     } catch (error) {
 
@@ -441,9 +449,8 @@ function saveSettings() {
     const languageInput =
         document.getElementById("language").value;
 
-const themeInput =
-    document.getElementById("theme").value;
-
+    const themeInput =
+        document.getElementById("theme").value;
 
     if (nameInput !== "") {
         user.name =
@@ -462,12 +469,11 @@ const themeInput =
 
     user.language =
         languageInput;
-user.theme =
-    themeInput;
 
+    user.theme =
+        themeInput;
 
     updateNewspaper();
-
     updateWeather();
 }
 
@@ -478,5 +484,4 @@ document
 
 
 updateNewspaper();
-
 updateWeather();
