@@ -332,39 +332,45 @@ footer {
 
 .settings button {
 
-    display: block;
+    display: block !important;
+
+    width: auto;
 
     margin: 25px auto 0;
 
-    padding: 12px 28px;
+    padding: 12px 30px;
 
-    border: 2px solid currentColor;
+    background: #000000 !important;
 
-    background: #32171c;
+    color: #ffffff !important;
 
-    color: #f5f0e6;
+    border: 2px solid #000000 !important;
 
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
+    font-family: Georgia, "Times New Roman", serif;
 
     font-size: 13px;
 
+    font-weight: bold;
+
     letter-spacing: 2px;
+
+    text-transform: uppercase;
 
     cursor: pointer;
 
-    transition:
-        opacity 0.2s ease,
-        transform 0.2s ease;
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
 }
+
 
 .settings button:hover {
 
-    opacity: 0.85;
+    background: #222222 !important;
 
-    transform: translateY(-1px);
+    color: #ffffff !important;
+
 }
 
 /* =========================
