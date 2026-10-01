@@ -329,17 +329,18 @@ footer {
 }
 
 
+
 .settings button {
 
     display: block;
 
     margin: 25px auto 0;
 
-    padding: 11px 25px;
+    padding: 12px 28px;
 
-    border: 1px solid currentColor;
+    border: 2px solid currentColor;
 
-    background: currentColor;
+    background: #32171c;
 
     color: #f5f0e6;
 
@@ -348,11 +349,23 @@ footer {
         "Times New Roman",
         serif;
 
+    font-size: 13px;
+
     letter-spacing: 2px;
 
     cursor: pointer;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
 }
 
+.settings button:hover {
+
+    opacity: 0.85;
+
+    transform: translateY(-1px);
+}
 
 /* =========================
    THEMES
