@@ -244,3 +244,22 @@ footer {
     }
 
 }
+.weather-content {
+    flex-wrap: wrap;
+}
+
+.weather-content div {
+    min-width: 100px;
+}
+
+@media (max-width: 700px) {
+
+    .weather-content {
+        gap: 25px;
+    }
+
+    .weather-content div {
+        min-width: 80px;
+    }
+
+}
