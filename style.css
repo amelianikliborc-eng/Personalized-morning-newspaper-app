@@ -4,151 +4,263 @@
 
 body {
     margin: 0;
+
     background: #d8d0c2;
     color: #171512;
+
     font-family: Georgia, "Times New Roman", serif;
+
+    transition:
+        background 0.4s ease,
+        color 0.4s ease;
 }
 
 .newspaper {
+
     width: min(1100px, 94%);
+
     margin: 40px auto;
+
     padding: 45px 55px;
+
     background: #f5f0e6;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.15);
+
+    transition:
+        background 0.4s ease,
+        color 0.4s ease;
 }
 
+
 .newspaper-header {
+
     text-align: center;
-    border-top: 3px double #171512;
-    border-bottom: 3px double #171512;
+
+    border-top: 3px double currentColor;
+    border-bottom: 3px double currentColor;
+
     padding: 18px 0 20px;
 }
 
+
 .location {
+
     margin: 0 0 15px;
+
     font-size: 11px;
+
     letter-spacing: 4px;
+
     text-transform: uppercase;
 }
 
+
 .newspaper-header h1 {
+
     margin: 0;
+
     font-size: clamp(42px, 7vw, 72px);
+
     font-weight: normal;
+
     letter-spacing: 7px;
 }
 
+
 .date {
+
     margin: 15px 0 0;
+
     font-size: 12px;
+
     letter-spacing: 2px;
 }
+
 
 .welcome {
+
     text-align: center;
+
     padding: 40px 10px;
-    border-bottom: 1px solid #777;
+
+    border-bottom: 1px solid currentColor;
 }
 
+
 .welcome h2 {
+
     margin: 0;
+
     font-size: 32px;
+
     font-weight: normal;
+
     letter-spacing: 2px;
 }
 
+
 .welcome p {
+
     margin: 12px 0 0;
+
     font-size: 14px;
+
     font-style: italic;
 }
 
+
 .weather {
+
     padding: 25px 0;
-    border-bottom: 1px solid #777;
+
+    border-bottom: 1px solid currentColor;
 }
 
+
 .weather h2 {
+
     margin: 0 0 20px;
+
     text-align: center;
+
     font-size: 12px;
+
     letter-spacing: 4px;
 }
 
+
 .weather-content {
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
-    gap: 90px;
+
+    gap: 50px;
+
+    flex-wrap: wrap;
+
     text-align: center;
 }
 
+
 .weather-content div {
+
     display: flex;
+
     flex-direction: column;
+
     gap: 6px;
+
+    min-width: 100px;
 }
 
+
 .weather-content strong {
+
     font-size: 27px;
+
     font-weight: normal;
 }
 
+
 .weather-content span {
+
     font-size: 10px;
+
     text-transform: uppercase;
+
     letter-spacing: 2px;
 }
 
+
 .news {
+
     display: grid;
+
     grid-template-columns: 2fr 1fr 1fr;
+
     gap: 25px;
+
     padding-top: 30px;
 }
 
+
 .news article {
+
     padding-right: 25px;
-    border-right: 1px solid #999;
+
+    border-right: 1px solid currentColor;
 }
 
+
 .news article:last-child {
+
     border-right: none;
 }
 
+
 .category {
+
     margin: 0 0 10px;
+
     font-size: 10px;
+
     letter-spacing: 3px;
+
     text-transform: uppercase;
 }
 
+
 .main-story h2 {
+
     margin: 0 0 15px;
+
     font-size: 36px;
+
     line-height: 1.05;
+
     font-weight: normal;
 }
+
 
 .story h3 {
+
     margin-top: 0;
+
     font-size: 23px;
+
     line-height: 1.1;
+
     font-weight: normal;
 }
 
+
 .news p {
+
     font-size: 14px;
+
     line-height: 1.6;
 }
 
+
 footer {
+
     margin-top: 45px;
+
     padding-top: 15px;
-    border-top: 1px solid #777;
+
+    border-top: 1px solid currentColor;
+
     text-align: center;
+
     font-size: 10px;
+
     letter-spacing: 2px;
+
     text-transform: uppercase;
 }
 
@@ -156,56 +268,199 @@ footer {
 /* SETTINGS */
 
 .settings {
+
     max-width: 600px;
+
     margin: 35px auto;
+
     padding: 30px;
-    border: 1px solid #999;
+
+    border: 1px solid currentColor;
 }
 
+
 .settings h2 {
+
     margin-top: 0;
+
     text-align: center;
+
     font-size: 14px;
+
     letter-spacing: 4px;
 }
 
+
 .settings label {
+
     display: block;
+
     margin-top: 18px;
+
     margin-bottom: 6px;
+
     font-size: 12px;
+
     letter-spacing: 1px;
+
     text-transform: uppercase;
 }
 
-.settings input {
+
+.settings input,
+.settings select {
+
     width: 100%;
+
     padding: 10px;
-    border: 1px solid #999;
-    background: #f8f3e9;
-    font-family: Georgia, "Times New Roman", serif;
+
+    border: 1px solid currentColor;
+
+    background: rgba(255, 255, 255, 0.35);
+
+    color: inherit;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
     font-size: 14px;
 }
 
-.settings select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #999;
-    background: #f8f3e9;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 14px;
-}
 
 .settings button {
+
     display: block;
+
     margin: 25px auto 0;
+
     padding: 11px 25px;
-    border: 1px solid #171512;
-    background: #171512;
+
+    border: 1px solid currentColor;
+
+    background: currentColor;
+
     color: #f5f0e6;
-    font-family: Georgia, "Times New Roman", serif;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
     letter-spacing: 2px;
+
     cursor: pointer;
+}
+
+
+/* =========================
+   THEMES
+   ========================= */
+
+
+/* CLASSIC */
+
+body.theme-classic {
+
+    background: #d8d0c2;
+
+    color: #171512;
+}
+
+body.theme-classic .newspaper {
+
+    background: #f5f0e6;
+}
+
+
+/* FOREST */
+
+body.theme-forest {
+
+    background: #c9cec5;
+
+    color: #172018;
+}
+
+body.theme-forest .newspaper {
+
+    background: #f1f0e7;
+}
+
+
+/* BURGUNDY */
+
+body.theme-burgundy {
+
+    background: #d6c5c1;
+
+    color: #32171c;
+}
+
+body.theme-burgundy .newspaper {
+
+    background: #f4eee7;
+}
+
+
+/* NAVY */
+
+body.theme-navy {
+
+    background: #c8ced5;
+
+    color: #182433;
+}
+
+body.theme-navy .newspaper {
+
+    background: #f3f1eb;
+}
+
+
+/* CHOCOLATE */
+
+body.theme-chocolate {
+
+    background: #d5c5b2;
+
+    color: #33251b;
+}
+
+body.theme-chocolate .newspaper {
+
+    background: #f1e5d3;
+}
+
+
+/* ROSE */
+
+body.theme-rose {
+
+    background: #ded0d1;
+
+    color: #35272b;
+}
+
+body.theme-rose .newspaper {
+
+    background: #f7f0eb;
+}
+
+
+/* MONOCHROME */
+
+body.theme-monochrome {
+
+    background: #cfcfcf;
+
+    color: #111111;
+}
+
+body.theme-monochrome .newspaper {
+
+    background: #f5f5f5;
 }
 
 
@@ -214,116 +469,56 @@ footer {
 @media (max-width: 700px) {
 
     .newspaper {
+
         width: 94%;
+
         padding: 30px 22px;
+
         margin: 20px auto;
     }
 
+
     .newspaper-header h1 {
+
         font-size: 38px;
+
         letter-spacing: 4px;
     }
 
+
     .welcome h2 {
+
         font-size: 25px;
     }
 
+
     .weather-content {
+
         gap: 25px;
     }
 
-    .news {
-        grid-template-columns: 1fr;
-    }
-
-    .news article {
-        padding-right: 0;
-        padding-bottom: 25px;
-        border-right: none;
-        border-bottom: 1px solid #999;
-    }
-
-}
-.weather-content {
-    flex-wrap: wrap;
-}
-
-.weather-content div {
-    min-width: 100px;
-}
-
-@media (max-width: 700px) {
-
-    .weather-content {
-        gap: 25px;
-    }
 
     .weather-content div {
+
         min-width: 80px;
     }
 
-}
-/* THEMES */
 
-body.theme-classic {
-    background: #d8d0c2;
-    color: #171512;
-}
+    .news {
 
-body.theme-classic .newspaper {
-    background: #f5f0e6;
-}
+        grid-template-columns: 1fr;
+    }
 
-body.theme-forest {
-    background: #c9cec5;
-    color: #172018;
-}
 
-body.theme-forest .newspaper {
-    background: #f1f0e7;
-}
+    .news article {
 
-body.theme-burgundy {
-    background: #d6c5c1;
-    color: #32171c;
-}
+        padding-right: 0;
 
-body.theme-burgundy .newspaper {
-    background: #f4eee7;
-}
+        padding-bottom: 25px;
 
-body.theme-navy {
-    background: #c8ced5;
-    color: #182433;
-}
+        border-right: none;
 
-body.theme-navy .newspaper {
-    background: #f3f1eb;
-}
+        border-bottom: 1px solid currentColor;
+    }
 
-body.theme-chocolate {
-    background: #d5c5b2;
-    color: #33251b;
-}
-
-body.theme-chocolate .newspaper {
-    background: #f1e5d3;
-}
-
-body.theme-rose {
-    background: #ded0d1;
-    color: #35272b;
-}
-
-body.theme-rose .newspaper {
-    background: #f7f0eb;
-}
-
-body.theme-monochrome {
-    background: #cfcfcf;
-    color: #111111;
-}
-
-body.theme-monochrome .newspaper {
-    background: #f5f5f5;
 }
