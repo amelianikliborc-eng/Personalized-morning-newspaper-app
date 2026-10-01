@@ -12,14 +12,15 @@
 
     <main class="newspaper">
 
-        <!-- HEADER -->
         <header class="newspaper-header">
 
             <p class="location" id="location">
                 OŚWIĘCIM, POLAND
             </p>
 
-            <h1>MORNING EDITION</h1>
+            <h1 id="newspaper-title">
+                MORNING EDITION
+            </h1>
 
             <p class="date" id="date">
                 1 OCTOBER 2026
@@ -28,92 +29,55 @@
         </header>
 
 
-        <!-- GREETING -->
         <section class="welcome">
 
             <h2 id="greeting">
                 GOOD MORNING, AMELA
             </h2>
 
-            <p>
+            <p id="welcome-text">
                 Your personalized morning newspaper.
             </p>
 
         </section>
 
 
-        <!-- WEATHER -->
         <section class="weather">
 
-            <h2>
+            <h2 id="weather-title">
                 WEATHER
             </h2>
 
             <div class="weather-content">
 
                 <div>
-                    <strong id="temperature">
-                        --°C
-                    </strong>
-
-                    <span>
-                        Now
-                    </span>
+                    <strong id="temperature">--°C</strong>
+                    <span id="now-label">Now</span>
                 </div>
 
-
                 <div>
-                    <strong id="high-low">
-                        --° / --°
-                    </strong>
-
-                    <span>
-                        High / Low
-                    </span>
+                    <strong id="high-low">--° / --°</strong>
+                    <span id="high-low-label">High / Low</span>
                 </div>
 
-
                 <div>
-                    <strong id="rain">
-                        --%
-                    </strong>
-
-                    <span>
-                        Rain
-                    </span>
+                    <strong id="rain">--%</strong>
+                    <span id="rain-label">Rain</span>
                 </div>
 
-
                 <div>
-                    <strong id="wind">
-                        -- km/h
-                    </strong>
-
-                    <span>
-                        Wind
-                    </span>
+                    <strong id="wind">-- km/h</strong>
+                    <span id="wind-label">Wind</span>
                 </div>
 
-
                 <div>
-                    <strong id="sunrise">
-                        --:--
-                    </strong>
-
-                    <span>
-                        Sunrise
-                    </span>
+                    <strong id="sunrise">--:--</strong>
+                    <span id="sunrise-label">Sunrise</span>
                 </div>
 
-
                 <div>
-                    <strong id="sunset">
-                        --:--
-                    </strong>
-
-                    <span>
-                        Sunset
-                    </span>
+                    <strong id="sunset">--:--</strong>
+                    <span id="sunset-label">Sunset</span>
                 </div>
 
             </div>
@@ -121,20 +85,19 @@
         </section>
 
 
-        <!-- NEWS -->
         <section class="news">
 
             <article class="main-story">
 
-                <p class="category">
+                <p class="category" id="world-category">
                     WORLD
                 </p>
 
-                <h2>
+                <h2 id="world-title">
                     Your morning news
                 </h2>
 
-                <p>
+                <p id="world-text">
                     Important events from around the world,
                     selected and summarized for you.
                 </p>
@@ -144,15 +107,15 @@
 
             <article class="story">
 
-                <p class="category">
+                <p class="category" id="science-category">
                     SCIENCE
                 </p>
 
-                <h3>
+                <h3 id="science-title">
                     Science & Space
                 </h3>
 
-                <p>
+                <p id="science-text">
                     The most interesting scientific
                     developments from the previous night.
                 </p>
@@ -162,15 +125,15 @@
 
             <article class="story">
 
-                <p class="category">
+                <p class="category" id="technology-category">
                     TECHNOLOGY
                 </p>
 
-                <h3>
+                <h3 id="technology-title">
                     Technology
                 </h3>
 
-                <p>
+                <p id="technology-text">
                     The latest developments in technology
                     and electronics.
                 </p>
@@ -180,15 +143,14 @@
         </section>
 
 
-        <!-- SETTINGS -->
         <section class="settings">
 
-            <h2>
+            <h2 id="settings-title">
                 SETTINGS
             </h2>
 
 
-            <label for="name">
+            <label for="name" id="name-label">
                 Your name
             </label>
 
@@ -199,7 +161,7 @@
             >
 
 
-            <label for="city">
+            <label for="city" id="city-label">
                 City
             </label>
 
@@ -210,7 +172,7 @@
             >
 
 
-            <label for="country">
+            <label for="country" id="country-label">
                 Country
             </label>
 
@@ -221,7 +183,7 @@
             >
 
 
-            <label for="language">
+            <label for="language" id="language-label">
                 Language
             </label>
 
@@ -257,10 +219,9 @@
         </section>
 
 
-        <!-- FOOTER -->
         <footer>
 
-            <p>
+            <p id="footer-text">
                 Morning Newspaper
             </p>
 
