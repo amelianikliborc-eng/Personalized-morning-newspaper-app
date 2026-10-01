@@ -316,10 +316,30 @@ footer {
 
     border: 1px solid currentColor;
 
-    background: rgba(255, 255, 255, 0.35);
+    background: #f5f0e6 !important;
 
-    color: inherit;
+    color: #171512 !important;
 
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+
+.settings input:focus,
+.settings select:focus {
+
+    background: #ffffff !important;
+
+    color: #171512 !important;
+
+    outline: none;
+}
     font-family:
         Georgia,
         "Times New Roman",
