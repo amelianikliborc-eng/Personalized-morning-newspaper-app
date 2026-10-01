@@ -310,8 +310,19 @@ function updateNewspaper() {
     document.getElementById("location").textContent =
         `${user.city}, ${user.country}`;
 
-    document.body.className =
-        `theme-${user.theme}`;
+    document.body.classList.remove(
+        "theme-classic",
+        "theme-forest",
+        "theme-burgundy",
+        "theme-navy",
+        "theme-chocolate",
+        "theme-rose",
+        "theme-monochrome"
+    );
+
+    document.body.classList.add(
+        `theme-${user.theme}`
+    );
 
     updateLanguage();
     updateDate();
