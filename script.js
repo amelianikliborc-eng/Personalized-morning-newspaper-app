@@ -286,14 +286,18 @@ function updateDate() {
     };
 
     const formattedDate =
-        today.toLocaleDateString(
-            user.language === "pl"
-                ? "pl-PL"
-                : user.language === "de"
-                ? "de-DE"
-                : "en-US",
-            options
-        );
+    today.toLocaleDateString(
+        user.language === "pl"
+            ? "pl-PL"
+            : user.language === "de"
+            ? "de-DE"
+            : user.language === "es"
+            ? "es-ES"
+            : user.language === "fr"
+            ? "fr-FR"
+            : "en-US",
+        options
+    );
 
     document.getElementById("date").textContent =
         formattedDate.toUpperCase();
